@@ -1,0 +1,24 @@
+{
+  "name": "react_redux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "evalenzuela",
+  "license": "ISC",
+  "dependencies": {
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Softx0/react-n-redux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Softx0/react-n-redux/issues"
+  },
+  "homepage": "https://github.com/Softx0/react-n-redux#readme",
+  "description": ""
+}
