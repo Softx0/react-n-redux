@@ -39,21 +39,52 @@ const returnPokemonAction = (cant) => {
         payload: cant
     }
 }
+const BUY_YOSHI = 'BUY_YOSHI';
+const RETURN_YOSHI = 'RETURN_YOSHI';
+
+const buyYoshiAction = (cant) => {
+    return {
+        type: BUY_YOSHI,
+        payload: cant
+    }
+}
+
+const returnYoshiAction = (cant) => {
+    return {
+        type: RETURN_YOSHI,
+        payload: cant
+    }
+}
 //Reducer
 const default_games_state = {
-    pokemon: 10
+    pokemon: 10,
+    yoshi: 10
 }
 
 const games_reducer = (state = default_games_state, action) => {
     switch (action.type) {
         case BUY_POKEMON: {
             return {
+                ...state,
                 pokemon: state.pokemon - action.payload
             }
         }
         case RETURN_POKEMON: {
             return {
+                ...state,
                 pokemon: state.pokemon + action.payload
+            }
+        }
+        case BUY_YOSHI: {
+            return {
+                ...state,
+                yoshi: state.yoshi - action.payload
+            }
+        }
+        case RETURN_YOSHI: {
+            return {
+                ...state,
+                yoshi: state.yoshi + action.payload
             }
         }
         default: return state;
@@ -75,3 +106,6 @@ store.subscribe(() => {
 
 store.dispatch(buyPokemonAction(3));
 store.dispatch(returnPokemonAction(2));
+store.dispatch(buyYoshiAction(2));
+store.dispatch(returnYoshiAction(3));
+
