@@ -24,11 +24,18 @@ const createStore = require('redux').createStore;
 
 // Actions
 const BUY_POKEMON = 'BUY_POKEMON';
-
+const RETURN_POKEMON = 'RETURN_POKEMON';
 
 const buyPokemonAction = (cant) => {
     return {
         type: BUY_POKEMON,
+        payload: cant
+    }
+}
+
+const returnPokemonAction = (cant) => {
+    return {
+        type: RETURN_POKEMON,
         payload: cant
     }
 }
@@ -42,6 +49,11 @@ const games_reducer = (state = default_games_state, action) => {
         case BUY_POKEMON: {
             return {
                 pokemon: state.pokemon - action.payload
+            }
+        }
+        case RETURN_POKEMON: {
+            return {
+                pokemon: state.pokemon + action.payload
             }
         }
         default: return state;
@@ -62,3 +74,4 @@ store.subscribe(() => {
 //con dispatch
 
 store.dispatch(buyPokemonAction(3));
+store.dispatch(returnPokemonAction(2));
