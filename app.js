@@ -22,7 +22,16 @@ const createStore = require('redux').createStore;
 
 // De la action pasa al store la solicitud y de ahi pasa al reducer para que el como empleado actue
 
+// Actions
+const BUY_POKEMON = 'BUY_POKEMON';
 
+
+const buyPokemonAction = (cant) => {
+    return {
+        type: BUY_POKEMON,
+        payload: cant
+    }
+}
 //Reducer
 const default_games_state = {
     pokemon: 10
@@ -30,6 +39,11 @@ const default_games_state = {
 
 const games_reducer = (state = default_games_state, action) => {
     switch (action.type) {
+        case BUY_POKEMON: {
+            return {
+                pokemon: state.pokemon - action.payload
+            }
+        }
         default: return state;
     }
 };
@@ -42,9 +56,9 @@ console.log('Estadp inicial', store.getState());
 //por cada cambio que se realice, cada cambio se refleja aqui
 store.subscribe(() => {
     console.log('Cambio de estado:', store.getState());
-})
+});
 
 //enviar mensaje por el action
 //con dispatch
 
-store.dispatch();
+store.dispatch(buyPokemonAction(3));
