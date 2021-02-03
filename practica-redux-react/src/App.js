@@ -2,10 +2,14 @@ import './App.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.css';
 import pokeImage from './img/pokemonImage.png';
-import CantidadPokemon from './components/CantidadPokemon';
-import CompraPokemon from './components/CompraPokemon';
+// import CantidadPokemon from './components/CantidadPokemon';
+// import CompraPokemon from './components/CompraPokemon';
 import store from './redux/store/store';
 import { Provider } from 'react-redux';
+import CantidadPokemonHook from './components/CantidadPokemonHook';
+import CompraPokemonHook from './components/CompraPokemonHook';
+import BuscadorPokemon from './components/buscador/BuscadorPokemon';
+import ResultadoPokemon from './components/buscador/ResultadoPokemon';
 
 
 
@@ -24,8 +28,8 @@ function App() {
                 <div className="col-8" >
                   <div className="card-body" >
                     <div className="card-title h3 text-center" >
-                      <CantidadPokemon />
-                      <CompraPokemon />
+                      <CantidadPokemonHook />
+                      <CompraPokemonHook />
                     </div>
                   </div>
                 </div>
@@ -33,6 +37,13 @@ function App() {
 
             </div>
 
+          </div>
+
+          <div className="col-12 mt-4 border-top pt-3">
+            <BuscadorPokemon />
+          </div>
+          <div className="col-12">
+            <ResultadoPokemon />
           </div>
         </div>
       </div>

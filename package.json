@@ -9,9 +9,11 @@
   "author": "evalenzuela",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {},
   "repository": {
