@@ -3,6 +3,7 @@
 
 // import { createStore } from "redux"; //react
 const createStore = require('redux').createStore;
+const combineReducers = require('redux').combineReducers;
 
 ////Actions
 
@@ -55,6 +56,15 @@ const returnYoshiAction = (cant) => {
         payload: cant
     }
 }
+
+const BUY_NINTENDO_SWITCH = 'BUY_NINTENDO_SWITCH';
+
+const buyNintendoSwitchAction = (cant) => {
+    return {
+        type: BUY_NINTENDO_SWITCH,
+        payload: cant
+    }
+}
 //Reducer
 const default_games_state = {
     pokemon: 10,
@@ -91,8 +101,37 @@ const games_reducer = (state = default_games_state, action) => {
     }
 };
 
+const default_consoles_state = {
+    ps5: 30,
+    nintendoSwitch: 30
+}
+
+const consoles_reducer = (state = default_consoles_state, action) => {
+    switch (action.type) {
+        case BUY_NINTENDO_SWITCH: {
+            return {
+                ...state,
+                nintendoSwitch: state.nintendoSwitch - action.payload
+            }
+        }
+        // case RETURN_POKEMON: {
+        //     return {
+        //         ...state,
+        //         pokemon: state.pokemon + action.payload
+        //     }
+        // }
+        default: return state;
+    }
+};
+
+const rootReducers = combineReducers({
+    games_reducer,
+    consoles_reducer
+});
+
 //Store
-const store = createStore(games_reducer);
+const store = createStore(rootReducers);
+
 console.log('Estadp inicial', store.getState());
 
 // cuando un cliente compra una unidad se cambia el estado en la app, y el store envia un evento, para eso hay que subscribirse a la store
@@ -104,8 +143,10 @@ store.subscribe(() => {
 //enviar mensaje por el action
 //con dispatch
 
-store.dispatch(buyPokemonAction(3));
-store.dispatch(returnPokemonAction(2));
-store.dispatch(buyYoshiAction(2));
-store.dispatch(returnYoshiAction(3));
+// store.dispatch(buyPokemonAction(3));
+// store.dispatch(returnPokemonAction(2));
+// store.dispatch(buyYoshiAction(2));
+// store.dispatch(returnYoshiAction(3));
+
+store.dispatch(buyNintendoSwitchAction(3));
 
