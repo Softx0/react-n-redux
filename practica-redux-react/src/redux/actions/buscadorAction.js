@@ -1,8 +1,7 @@
 import axios from 'axios';
-import React from 'react';
 
-const URL_BASE = 'https://pokeapi.co/api/v2';
-const POKEMON = '/pokemon';
+// const URL_BASE = 'https://pokeapi.co/api/v2';
+// const POKEMON = '/pokemon';
 
 export const FETCH_POKEMON_REQUEST = 'FETCH_POKEMON_REQUEST';
 
@@ -37,7 +36,8 @@ export const fetchPokemonFailure = (err) => {
 const fetchpokemon = (pokemon) =>{
     return ((dispatch) => {
         dispatch(fetchPokemonRequest());
-        axios.get(`${URL_BASE}${POKEMON}${pokemon}`)
+        // axios.get(`${URL_BASE}${POKEMON}${pokemon}`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
             .then(respo => {
                 dispatch(fetchPokemonSuccess([respo.data]));
             })
