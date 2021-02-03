@@ -9,6 +9,7 @@
   "author": "evalenzuela",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {},
